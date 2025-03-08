@@ -1,0 +1,28 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <form (ngSubmit)="login()">
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="credentials.email"
+        required
+      />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="credentials.password"
+        required
+      />
+    </div>
+    <button type="submit">Login</button>
+    <button type="button" (click)="googleLogin()">Login with Google</button>
+  </form>
+</div>

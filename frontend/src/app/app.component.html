@@ -1,0 +1,19 @@
+<nav>
+  <!-- <a routerLink="/posts" routerLinkActive="active">Posts</a> -->
+  <a
+    routerLink="/login"
+    routerLinkActive="active"
+    *ngIf="!authService.isAuthenticated()"
+    >Login</a
+  >
+  <a
+    routerLink="/register"
+    routerLinkActive="active"
+    *ngIf="!authService.isAuthenticated()"
+    >Register</a
+  >
+  <button (click)="logout()" *ngIf="authService.isAuthenticated()">
+    Logout
+  </button>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+nav {
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: left; /* Align items to the left */
+  border-bottom: 1px solid #dee2e6; /* Add a bottom border */
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+nav a.active {
+  background-color: #007bff; /* Blue background for active link */
+  color: white;
+}
+
+nav a:hover {
+  background-color: #e9ecef; /* Light gray on hover */
+}
+
+nav button {
+  background-color: #dc3545; /* Red background for logout */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: auto; /* Push logout button to the right */
+}
+
+nav button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}

@@ -1,0 +1,35 @@
+<div class="posts-container">
+  <h2>Posts</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="isAuthenticated">
+    <h3>Create New Post</h3>
+    <form (ngSubmit)="createPost()">
+      <div>
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="newPost.title"
+          required
+        />
+      </div>
+      <div>
+        <label for="content">Content:</label>
+        <textarea
+          id="content"
+          name="content"
+          [(ngModel)]="newPost.content"
+          required
+        ></textarea>
+      </div>
+      <button type="submit">Create</button>
+    </form>
+  </div>
+  <ul>
+    <li *ngFor="let post of posts">
+      <a [routerLink]="['/posts', post._id]">{{ post.title }}</a>
+      <button (click)="deletePost(post._id)">Delete</button>
+    </li>
+  </ul>
+</div>
