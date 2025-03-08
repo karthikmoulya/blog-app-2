@@ -1,98 +1,163 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Blog Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a **Blog Application** built using **NestJS** for the backend and **Angular** for the frontend. The app includes user authentication with Google and Facebook, JWT-based session management, and full CRUD operations for blog posts.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🚀 Technologies Used
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### **Backend (NestJS + MongoDB)**
 
-## Project setup
+- NestJS (with Express)
+- Mongoose (MongoDB ORM)
+- PassportJS (Google & Facebook Authentication)
+- JWT (JSON Web Token for authentication)
+- Bcrypt (Password Hashing)
+- Dotenv (Environment Variable Management)
 
-```bash
-$ yarn install
+### **Frontend (Angular)**
+
+- Angular 17+
+- Angular Router
+- Angular Forms
+- HttpClient
+- Angular Guards (AuthGuard)
+- Bootstrap (for styling)
+
+---
+
+## 📂 Folder Structure
+
+### **Backend (**``**):**
+
+```
+backend/
+│── src/
+│   ├── auth/           # Authentication (Google, Facebook, JWT)
+│   ├── users/          # User Model & Service
+│   ├── posts/          # CRUD operations for blog posts
+│   ├── config/         # Configuration files (Passport, JWT, MongoDB)
+│   ├── main.ts         # Application entry point
+│   ├── app.module.ts   # Main Module
+│── .env                # Environment Variables
+│── package.json        # Dependencies
+│── tsconfig.json       # TypeScript Config
 ```
 
-## Compile and run the project
+### **Frontend (**``**):**
 
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+```
+frontend/
+│── src/
+│   ├── app/
+│   │   ├── pages/
+│   │   │   ├── login/        # Login Page
+│   │   │   ├── dashboard/    # Dashboard with posts
+│   │   │   ├── create-post/  # Post Creation
+│   │   │   ├── post-detail/  # Single Post Detail
+│   │   ├── services/         # Auth & API Services
+│   │   ├── guards/           # AuthGuard for routes
+│   │   ├── app-routing.module.ts  # Angular Routes
+│   │   ├── app.module.ts          # Main Module
+│── environments/
+│   ├── environment.ts        # Development Config
+│   ├── environment.prod.ts   # Production Config
+│── package.json             # Dependencies
+│── angular.json             # Angular Config
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ yarn run test
+## 🔧 Setup Instructions
 
-# e2e tests
-$ yarn run test:e2e
+### **1️⃣ Backend Setup**
 
-# test coverage
-$ yarn run test:cov
+```sh
+cd backend
+npm install
 ```
 
-## Deployment
+- Configure **MongoDB** and **Auth Credentials** in `.env` file:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ yarn install -g mau
-$ mau deploy
+```env
+MONGO_URI=mongodb://localhost:27017/blog-db
+JWT_SECRET=your_jwt_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+- Start the backend:
 
-## Resources
+```sh
+npm run start:dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### **2️⃣ Frontend Setup**
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```sh
+cd frontend
+npm install
+```
 
-## Support
+- Configure **API URL** in `src/environments/environment.ts`:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000',
+};
+```
 
-## Stay in touch
+- Start the frontend:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```sh
+ng serve
+```
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 🔑 Authentication Flow
+
+1. Users can log in via **Google** or **Facebook**.
+2. The backend verifies the authentication and issues a **JWT token**.
+3. The frontend stores the JWT in **localStorage** and uses it for authenticated API requests.
+4. The **AuthGuard** protects restricted routes (e.g., dashboard, post creation).
+
+---
+
+## 📝 API Endpoints (Backend)
+
+| Method | Endpoint       | Description          |
+| ------ | -------------- | -------------------- |
+| POST   | /auth/google   | Google OAuth Login   |
+| POST   | /auth/facebook | Facebook OAuth Login |
+| POST   | /auth/login    | JWT Login            |
+| GET    | /posts         | Fetch All Posts      |
+| POST   | /posts         | Create New Post      |
+| GET    | /posts/\:id    | Get Post Details     |
+| PUT    | /posts/\:id    | Update Post          |
+| DELETE | /posts/\:id    | Delete Post          |
+
+---
+
+## ✅ Features
+
+✔ User authentication via **Google & Facebook**\
+✔ JWT-based authentication & role-based access\
+✔ CRUD operations for **blog posts**\
+✔ Angular **Route Guards** for protected pages\
+✔ Responsive **UI with Bootstrap**\
+✔ MongoDB **storage for users & posts**\
+✔ Environment-specific configuration support
+
+## 📜 License
+
+This project is open-source and available under the **MIT License**.
+
+---
+
+## 📬 Need Help?
+
+If you have any questions or issues, feel free to reach out!
